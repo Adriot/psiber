@@ -40,8 +40,8 @@ public class TaxInformationResourceIT {
     private static final Integer DEFAULT_TAX_YEAR = 2017;
     private static final Integer UPDATED_TAX_YEAR = 2018;
 
-    private static final Integer DEFAULT_AGE = 1;
-    private static final Integer UPDATED_AGE = 2;
+    private static final Integer DEFAULT_AGE = 150;
+    private static final Integer UPDATED_AGE = 149;
 
     private static final Long DEFAULT_TOTAL_EARNINGS = 1L;
     private static final Long UPDATED_TOTAL_EARNINGS = 2L;
@@ -49,8 +49,8 @@ public class TaxInformationResourceIT {
     private static final Frequency DEFAULT_FREQUENCY = Frequency.ANNUAL;
     private static final Frequency UPDATED_FREQUENCY = Frequency.MONTHLY;
 
-    private static final Integer DEFAULT_NUMBER_OF_MEDICAL_AID_MEMBERS = 1;
-    private static final Integer UPDATED_NUMBER_OF_MEDICAL_AID_MEMBERS = 2;
+    private static final Integer DEFAULT_NUMBER_OF_MEDICAL_AID_MEMBERS = 30;
+    private static final Integer UPDATED_NUMBER_OF_MEDICAL_AID_MEMBERS = 29;
 
     @Autowired
     private TaxInformationRepository taxInformationRepository;

@@ -18,10 +18,10 @@ export class TaxInformationUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     taxYear: [null, [Validators.required, Validators.min(2017), Validators.max(2018)]],
-    age: [null, [Validators.required]],
+    age: [null, [Validators.required, Validators.max(150)]],
     totalEarnings: [null, [Validators.required]],
     frequency: [null, [Validators.required]],
-    numberOfMedicalAidMembers: [null, [Validators.required]]
+    numberOfMedicalAidMembers: [null, [Validators.required, Validators.max(30)]]
   });
 
   constructor(protected taxInformationService: TaxInformationService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}

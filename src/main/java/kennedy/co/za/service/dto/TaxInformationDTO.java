@@ -18,6 +18,7 @@ public class TaxInformationDTO implements Serializable {
     private Integer taxYear;
 
     @NotNull
+    @Max(value = 150)
     private Integer age;
 
     @NotNull
@@ -27,6 +28,7 @@ public class TaxInformationDTO implements Serializable {
     private Frequency frequency;
 
     @NotNull
+    @Max(value = 30)
     private Integer numberOfMedicalAidMembers;
 
 

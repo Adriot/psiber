@@ -4,10 +4,10 @@ enum Frequency {
 
 entity TaxInformation {
 	taxYear Integer required min(2017) max(2018),
-	age Integer required,
+	age Integer required max(150),
     totalEarnings Long required,
     frequency Frequency required,
-    numberOfMedicalAidMembers Integer required
+    numberOfMedicalAidMembers Integer required max(30)
 }
 
 // Set pagination options

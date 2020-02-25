@@ -31,6 +31,7 @@ public class TaxInformation implements Serializable {
     private Integer taxYear;
 
     @NotNull
+    @Max(value = 150)
     @Column(name = "age", nullable = false)
     private Integer age;
 
@@ -44,6 +45,7 @@ public class TaxInformation implements Serializable {
     private Frequency frequency;
 
     @NotNull
+    @Max(value = 30)
     @Column(name = "number_of_medical_aid_members", nullable = false)
     private Integer numberOfMedicalAidMembers;
 

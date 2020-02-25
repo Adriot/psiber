@@ -45,6 +45,10 @@
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
+                               *ngIf="editForm.get('age')?.errors?.max">
+                            This field cannot be more than 150.
+                        </small>
+                        <small class="form-text text-danger"
                             [hidden]="!editForm.get('age')?.errors?.number">
                             This field should be a number.
                         </small>
@@ -89,6 +93,10 @@
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('numberOfMedicalAidMembers')?.errors?.required">
                         This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberOfMedicalAidMembers')?.errors?.max">
+                            This field cannot be more than 30.
                         </small>
                         <small class="form-text text-danger"
                             [hidden]="!editForm.get('numberOfMedicalAidMembers')?.errors?.number">
