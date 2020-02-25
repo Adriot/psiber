@@ -42,6 +42,7 @@ public class CacheConfiguration {
             createCache(cm, kennedy.co.za.domain.User.class.getName());
             createCache(cm, kennedy.co.za.domain.Authority.class.getName());
             createCache(cm, kennedy.co.za.domain.User.class.getName() + ".authorities");
+            createCache(cm, kennedy.co.za.domain.TaxInformation.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
