@@ -1,6 +1,8 @@
 package kennedy.co.za.web.rest;
 
 import kennedy.co.za.service.TaxInformationService;
+import kennedy.co.za.web.rest.business.rules.TwentyEighteenTaxCalculations;
+import kennedy.co.za.web.rest.business.rules.TwentySeventeenTaxCalculations;
 import kennedy.co.za.web.rest.errors.BadRequestAlertException;
 import kennedy.co.za.service.dto.TaxInformationDTO;
 
@@ -57,6 +59,27 @@ public class TaxInformationResource {
         if (taxInformationDTO.getId() != null) {
             throw new BadRequestAlertException("A new taxInformation cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        // TODO: Call Tax Calculation Function Here
+        Integer taxYear = taxInformationDTO.getTaxYear();
+
+        Long annualTax, monthlyTax;
+        if (taxYear == 2017) {
+            TwentySeventeenTaxCalculations twentySeventeenTaxCalculations = new TwentySeventeenTaxCalculations(taxInformationDTO);
+            twentySeventeenTaxCalculations.calculateTaxableIncome();
+            twentySeventeenTaxCalculations.calculateTaxRate();
+            twentySeventeenTaxCalculations.calculateTaxMedicalAidCost();
+            annualTax = twentySeventeenTaxCalculations.calculateAnnualTax();
+            monthlyTax = twentySeventeenTaxCalculations.calculateMonthlyTax();
+        } else {
+            TwentyEighteenTaxCalculations twentyEighteenTaxCalculations = new TwentyEighteenTaxCalculations(taxInformationDTO);
+            twentyEighteenTaxCalculations.calculateTaxableIncome();
+            twentyEighteenTaxCalculations.calculateTaxRate();
+            twentyEighteenTaxCalculations.calculateTaxMedicalAidCost();
+            annualTax = twentyEighteenTaxCalculations.calculateAnnualTax();
+            monthlyTax = twentyEighteenTaxCalculations.calculateMonthlyTax();
+        }
+
         TaxInformationDTO result = taxInformationService.save(taxInformationDTO);
         return ResponseEntity.created(new URI("/api/tax-informations/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
@@ -79,7 +102,6 @@ public class TaxInformationResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
 
-        // TODO: Call Tax Calculation Function Here
         TaxInformationDTO result = taxInformationService.save(taxInformationDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, taxInformationDTO.getId().toString()))
