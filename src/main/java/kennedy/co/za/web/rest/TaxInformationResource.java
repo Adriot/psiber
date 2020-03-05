@@ -78,6 +78,8 @@ public class TaxInformationResource {
         if (taxInformationDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+
+        // TODO: Call Tax Calculation Function Here
         TaxInformationDTO result = taxInformationService.save(taxInformationDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, taxInformationDTO.getId().toString()))
