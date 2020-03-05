@@ -1,7 +1,10 @@
 package kennedy.co.za.web.rest.business.rules;
 
+import kennedy.co.za.domain.enumeration.Frequency;
 import kennedy.co.za.service.dto.TaxInformationDTO;
 import kennedy.co.za.web.rest.business.rules.helpers.Percentage;
+
+import static kennedy.co.za.domain.enumeration.Frequency.MONTHLY;
 
 public class TwentyEighteenTaxCalculations extends TaxCalculations {
     public TwentyEighteenTaxCalculations(TaxInformationDTO taxInformationDTO) {
@@ -15,6 +18,10 @@ public class TwentyEighteenTaxCalculations extends TaxCalculations {
         Percentage percentage;
         if (taxInformationDTO != null) {
             Long totalEarnings = taxInformationDTO.getTotalEarnings();
+            Frequency frequency = taxInformationDTO.getFrequency();
+            if (frequency == MONTHLY) {
+                totalEarnings = totalEarnings * 12;
+            }
 
             if (totalEarnings >= 0L && totalEarnings <= 189880L) {
                 percentage = new Percentage(totalEarnings, 18);
@@ -71,6 +78,10 @@ public class TwentyEighteenTaxCalculations extends TaxCalculations {
     public void calculateTaxRate() {
         if (taxInformationDTO != null) {
             Long totalEarnings = taxInformationDTO.getTotalEarnings();
+            Frequency frequency = taxInformationDTO.getFrequency();
+            if (frequency == MONTHLY) {
+                totalEarnings = totalEarnings * 12;
+            }
 
             if (totalEarnings >= 0L && totalEarnings <= 189880L) {
                 taxRate = taxableIncome;
