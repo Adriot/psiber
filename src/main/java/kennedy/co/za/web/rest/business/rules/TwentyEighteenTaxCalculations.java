@@ -25,51 +25,51 @@ public class TwentyEighteenTaxCalculations extends TaxCalculations {
 
             if (totalEarnings >= 0L && totalEarnings <= 189880L) {
                 percentage = new Percentage(totalEarnings, 18);
-                Object percentageValue = percentage.calculatePercentageValue();
+                Long percentageValue = percentage.calculatePercentageValue();
 
-                setTaxableIncomeValue((Long) percentageValue);
+                taxableIncome = percentageValue;
             } else if (totalEarnings >= 189881L && totalEarnings <= 296540L) {
                 lowerRangeTaxBracketUpperBound = 189880L;
                 taxableIncomeRemainder = totalEarnings - lowerRangeTaxBracketUpperBound;
                 percentage = new Percentage(taxableIncomeRemainder, 26);
-                Object percentageValue = percentage.calculatePercentageValue();
+                Long percentageValue = percentage.calculatePercentageValue();
 
-                setTaxableIncomeValue((Long) percentageValue);
+                taxableIncome = percentageValue;
             } else if (totalEarnings >= 296541L && totalEarnings <= 410460L) {
                 lowerRangeTaxBracketUpperBound = 296540L;
                 taxableIncomeRemainder = totalEarnings - lowerRangeTaxBracketUpperBound;
                 percentage = new Percentage(taxableIncomeRemainder, 31);
-                Object percentageValue = percentage.calculatePercentageValue();
+                Long percentageValue = percentage.calculatePercentageValue();
 
-                setTaxableIncomeValue((Long) percentageValue);
+                taxableIncome = percentageValue;
             } else if (totalEarnings >= 410461L && totalEarnings <= 555600L) {
                 lowerRangeTaxBracketUpperBound = 410460L;
                 taxableIncomeRemainder = totalEarnings - lowerRangeTaxBracketUpperBound;
                 percentage = new Percentage(taxableIncomeRemainder, 36);
-                Object percentageValue = percentage.calculatePercentageValue();
+                Long percentageValue = percentage.calculatePercentageValue();
 
-                setTaxableIncomeValue((Long) percentageValue);
+                taxableIncome = percentageValue;
             } else if (totalEarnings >= 555601L && totalEarnings <= 708310L) {
                 lowerRangeTaxBracketUpperBound = 555600L;
                 taxableIncomeRemainder = totalEarnings - lowerRangeTaxBracketUpperBound;
                 percentage = new Percentage(taxableIncomeRemainder, 39);
-                Object percentageValue = percentage.calculatePercentageValue();
+                Long percentageValue = percentage.calculatePercentageValue();
 
-                setTaxableIncomeValue((Long) percentageValue);
+                taxableIncome = percentageValue;
             } else if (totalEarnings >= 708311L && totalEarnings <= 1500000L) {
                 lowerRangeTaxBracketUpperBound = 708310L;
                 taxableIncomeRemainder = totalEarnings - lowerRangeTaxBracketUpperBound;
                 percentage = new Percentage(taxableIncomeRemainder, 41);
-                Object percentageValue = percentage.calculatePercentageValue();
+                Long percentageValue = percentage.calculatePercentageValue();
 
-                setTaxableIncomeValue((Long) percentageValue);
+                taxableIncome = percentageValue;
             } else if (totalEarnings >= 1500001L) {
                 lowerRangeTaxBracketUpperBound = 1500000L;
                 taxableIncomeRemainder = totalEarnings - lowerRangeTaxBracketUpperBound;
                 percentage = new Percentage(taxableIncomeRemainder, 45);
-                Object percentageValue = percentage.calculatePercentageValue();
+                Long percentageValue = percentage.calculatePercentageValue();
 
-                setTaxableIncomeValue((Long) percentageValue);
+                taxableIncome = percentageValue;
             }
         }
     }

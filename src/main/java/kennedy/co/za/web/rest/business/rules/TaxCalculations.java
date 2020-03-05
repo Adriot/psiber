@@ -38,13 +38,4 @@ public abstract class TaxCalculations {
         monthlyTax = annualTax / 12;
         return monthlyTax;
     }
-
-    public void setTaxableIncomeValue(Long percentageValue) {
-        try {
-            taxableIncome = percentageValue;
-        } catch (Exception e) {
-            e.printStackTrace();
-            // TODO: Handle Exceptions
-        }
-    }
 }

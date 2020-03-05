@@ -1,11 +1,11 @@
 <div>
     <h2 id="page-heading">
-        <span>Tax Informations</span>
+        <span>Tax Information</span>
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tax-information" [routerLink]="['/tax-information/new']">
             <fa-icon icon="plus"></fa-icon>
             <span>
-            Create a new Tax Information
+            New Tax Calculation
             </span>
         </button>
     </h2>
@@ -27,7 +27,8 @@
                     <th scope="col"  jhiSortBy="age"><span>Age</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="totalEarnings"><span>Total Earnings</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="frequency"><span>Frequency</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="numberOfMedicalAidMembers"><span>Number Of Medical Aid Members</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numberOfMedicalAidMembers"><span># On Medical Aid</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numberOfMedicalAidMembers"><span>Calculated Tax</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -39,6 +40,7 @@
                     <td>{{ taxInformation.totalEarnings }}</td>
                     <td>{{ taxInformation.frequency }}</td>
                     <td>{{ taxInformation.numberOfMedicalAidMembers }}</td>
+                    <td>{{ calculateTax(taxInformation) }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

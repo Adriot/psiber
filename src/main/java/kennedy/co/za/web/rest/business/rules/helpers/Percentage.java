@@ -4,7 +4,7 @@ public class Percentage {
     private Long value;
     private Integer percentage;
     private final Integer percentageBound = 100;
-    private Object percentageValue;
+    private Long percentageValue;
 
     public Percentage(Long value, Integer percentage) {
         this.value = value;
@@ -32,9 +32,9 @@ public class Percentage {
     }
 
 
-    public Object calculatePercentageValue() {
+    public Long calculatePercentageValue() {
         Integer fraction = Math.toIntExact(value / percentageBound);
-        percentageValue = fraction * percentage;
+        percentageValue = Long.valueOf(fraction * percentage);
         return percentageValue;
     }
 }
