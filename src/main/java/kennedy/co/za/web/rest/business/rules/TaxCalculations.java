@@ -3,12 +3,12 @@ package kennedy.co.za.web.rest.business.rules;
 import kennedy.co.za.service.dto.TaxInformationDTO;
 
 public abstract class TaxCalculations {
-    private TaxInformationDTO taxInformationDTO;
-    private Long taxableIncome;
-    private Long taxRate;
-    private Long medicalAidCost;
-    private Long annualTax;
-    private Long monthlyTax;
+    protected TaxInformationDTO taxInformationDTO;
+    protected Long taxableIncome;
+    protected Long taxRate;
+    protected Long medicalAidCost;
+    protected Long annualTax;
+    protected Long monthlyTax;
 
     public TaxCalculations(TaxInformationDTO taxInformationDTO) {
         this.taxInformationDTO = taxInformationDTO;
@@ -37,5 +37,14 @@ public abstract class TaxCalculations {
         }
         monthlyTax = annualTax / 12;
         return monthlyTax;
+    }
+
+    public void setTaxableIncomeValue(Long percentageValue) {
+        try {
+            taxableIncome = percentageValue;
+        } catch (Exception e) {
+            e.printStackTrace();
+            // TODO: Handle Exceptions
+        }
     }
 }
